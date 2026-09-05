@@ -25,6 +25,7 @@ export function Capabilities() {
       <SectionHeader
         eyebrow="Capabilities"
         index="05"
+        trailing={`${portfolio.skills.length} layers`}
         title="One connected stack."
         align="between"
         lead="Not a list of logos. These are the layers I work across, and how they connect in the systems I build."
@@ -123,7 +124,7 @@ function Layer({
       <div className="flex items-baseline gap-3 border-t border-line pt-4 lg:border-t-0 lg:pt-0">
         <span
           className={cn(
-            "text-eyebrow tabular-nums transition-colors duration-400",
+            "text-meta tabular-nums transition-colors duration-400",
             isActive ? "text-accent" : "text-fg-faint",
           )}
         >

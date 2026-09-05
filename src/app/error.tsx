@@ -22,7 +22,7 @@ export default function Error({
         className="tech-grid pointer-events-none absolute inset-0 -z-10 opacity-50 [mask-image:radial-gradient(80%_60%_at_50%_40%,black,transparent)]"
       />
       <div className="container-page">
-        <p className="text-eyebrow text-danger">Unexpected error</p>
+        <p className="text-meta text-danger">Unexpected error</p>
         <h1 className="text-display mt-6 max-w-3xl text-[clamp(2rem,1.2rem+3.4vw,3.75rem)] text-fg">
           Something broke on the way to this page.
         </h1>

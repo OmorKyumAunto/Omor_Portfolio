@@ -52,9 +52,9 @@ export default function WorkIndexPage() {
         <div className="container-page">
           <Reveal y={0} duration={0.6}>
             <div className="flex items-center gap-4 pb-6">
-              <span className="text-eyebrow text-accent">Archive</span>
+              <span className="text-meta text-accent">Archive</span>
               <span aria-hidden="true" className="h-px flex-1 bg-line-strong" />
-              <span className="text-eyebrow tabular-nums text-fg-faint">
+              <span className="text-meta tabular-nums text-fg-faint">
                 {String(projects.length).padStart(2, "0")} projects
               </span>
             </div>

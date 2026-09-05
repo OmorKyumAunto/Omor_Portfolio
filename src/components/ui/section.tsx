@@ -29,11 +29,20 @@ export function Section({
   );
 }
 
+/**
+ * V2 section header.
+ *
+ * The label line is the same coordinate form everywhere — `04 / CAPABILITIES
+ * ————— trailing` — so the page reads as one numbered document rather than a
+ * stack of independently designed sections. `SectionLabel` renders the identical
+ * line for sections that compose their own heading.
+ */
 export function SectionHeader({
   eyebrow,
   index,
   title,
   lead,
+  trailing,
   align = "start",
   className,
   children,
@@ -42,6 +51,8 @@ export function SectionHeader({
   index?: string;
   title: ReactNode;
   lead?: ReactNode;
+  /** Optional right-aligned counterpart, e.g. a count. */
+  trailing?: ReactNode;
   align?: "start" | "between";
   className?: string;
   children?: ReactNode;
@@ -49,12 +60,14 @@ export function SectionHeader({
   return (
     <header className={cn("relative", className)}>
       <Reveal y={0} duration={0.6}>
-        <div className="flex items-center gap-4 pb-5">
-          <span className="text-eyebrow text-accent">{eyebrow}</span>
-          <span aria-hidden="true" className="h-px flex-1 bg-line-strong" />
+        <div className="flex items-center gap-4 pb-6">
           {index ? (
-            <span className="text-eyebrow tabular-nums text-fg-faint">{index}</span>
+            <span className="text-meta tabular-nums text-accent">{index}</span>
           ) : null}
+          <span aria-hidden="true" className="h-px w-6 bg-line-strong" />
+          <span className="text-meta text-fg-subtle">{eyebrow}</span>
+          <span aria-hidden="true" className="h-px flex-1 bg-line" />
+          {trailing ? <span className="text-meta text-fg-faint">{trailing}</span> : null}
         </div>
       </Reveal>
 
@@ -65,7 +78,7 @@ export function SectionHeader({
         )}
       >
         <Reveal y={18}>
-          <h2 className="text-display text-[clamp(2rem,1.2rem+3.4vw,3.75rem)] text-fg">
+          <h2 className="text-display text-[clamp(2rem,1.2rem+3vw,4rem)] text-fg">
             {title}
           </h2>
         </Reveal>

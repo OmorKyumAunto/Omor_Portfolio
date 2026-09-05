@@ -16,7 +16,7 @@ export function Trust() {
               className="group/t relative py-6 sm:py-8 lg:border-l lg:border-line lg:px-6 lg:py-10 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0"
             >
               <Reveal y={14} delay={i * 0.05} amount={0.4}>
-                <span className="text-eyebrow block text-fg-faint tabular-nums">
+                <span className="text-meta block text-fg-faint tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="mt-2.5 block text-[0.9375rem] font-medium tracking-[-0.01em] text-fg">

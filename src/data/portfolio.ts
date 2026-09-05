@@ -402,13 +402,96 @@ export const portfolio: PortfolioData = {
 
     /* ---------------------------------------------------------------- 03 */
     {
-      slug: "complaint-management-system",
+      slug: "portfolio-brand-websites",
       index: "03",
+      title: "Portfolio & Personal Brand Websites",
+      shortTitle: "Portfolio Websites",
+      category: "Personal Brand & Web Experience",
+      featured: true,
+      featuredOrder: 3,
+      tagline: "Editorial personal sites that present expertise, not just a CV.",
+      summary:
+        "Personal brand websites built as editorial products — a full-stack engineering portfolio with an AI project-fit analyzer, and an executive leadership site structured around expertise, impact and sustainability.",
+      problem:
+        "A CV lists roles. It does not show how someone works, what they have actually built, or why a stranger should start a conversation. Most personal sites are a template with a headshot dropped in, which reads the same as everyone else's.",
+      approach:
+        "Treat each site as a product with one job: get a specific reader to a specific action. That means a distinct visual system rather than a theme, content structured around evidence instead of adjectives, and an interaction that does something useful rather than decorating the page.",
+      solution:
+        "Two builds sharing an approach and nothing else visually. The engineering portfolio uses a dark editorial system, case-study pages driven from one typed content file, and an AI analyzer that compares a visitor's requirement against documented work. The executive site uses a light editorial system organised around expertise, leadership, impact and sustainability commitments.",
+      role:
+        "Design and full-stack build. Visual system, component architecture, content model, responsive behaviour, accessibility, AI integration and deployment.",
+      challenge:
+        "Personal sites drift toward self-description. Keeping each one grounded in evidence — real screenshots, documented capabilities, an assistant that refuses to overstate — meant building content structures that make unsupported claims awkward to add in the first place.",
+      outcome:
+        "Two distinct sites that read as products rather than templates, each pointing its own audience at a clear next step.",
+      capabilities: [
+        "Editorial Design Systems",
+        "Component Architecture",
+        "Content Modelling",
+        "AI Integration",
+        "Responsive Layout",
+        "Accessibility",
+        "SEO & Metadata",
+        "Deployment",
+      ],
+      features: [
+        { title: "Distinct visual systems", description: "Each site gets its own type scale, palette and motion language rather than a shared theme." },
+        { title: "Typed content model", description: "All copy and project data in one typed file, so content changes never touch components." },
+        { title: "AI project-fit analyzer", description: "Grounded assistant that compares a visitor's brief against documented work and names the gaps." },
+        { title: "Case-study architecture", description: "Per-project pages generated from data, with dynamic metadata and social images." },
+        { title: "Accessibility built in", description: "Keyboard navigation, visible focus, reduced-motion support and AA contrast in both themes." },
+        { title: "Editorial structure", description: "Expertise, leadership, impact and sustainability presented as sections, not a wall of prose." },
+      ],
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "AI Integration"],
+      poster: {
+        src: "/projects/portfolios/portfolios_poster.webp",
+        alt: "Portfolio website development overview showing two personal brand sites across desktop and mobile",
+        width: 1536,
+        height: 1024,
+      },
+      images: [
+        {
+          src: "/projects/portfolios/landingone.webp",
+          alt: "Dark editorial portfolio homepage with an animated system diagram showing interface, API, data, AI and automation layers",
+          caption: "Engineering portfolio — homepage",
+          width: 2560,
+          height: 1368,
+        },
+        {
+          src: "/projects/portfolios/onedetails.webp",
+          alt: "Capabilities section presenting frontend, backend, database, AI and DevOps layers as a connected fan-out diagram",
+          caption: "Engineering portfolio — capabilities",
+          width: 2560,
+          height: 1368,
+        },
+        {
+          src: "/projects/portfolios/landingtwo.webp",
+          alt: "Light editorial executive portfolio homepage with a leadership positioning statement and portrait",
+          caption: "Executive portfolio — homepage",
+          width: 2560,
+          height: 1368,
+        },
+        {
+          src: "/projects/portfolios/twodetails.webp",
+          alt: "Sustainable Development Goals section mapping utility leadership to the seventeen global goals, above a contact block",
+          caption: "Executive portfolio — impact and sustainability",
+          width: 2560,
+          height: 1368,
+        },
+      ],
+      liveUrl: "",
+      repoUrl: "",
+      hue: 250,
+    },
+
+    /* ---------------------------------------------------------------- 04 */
+    {
+      slug: "complaint-management-system",
+      index: "04",
       title: "Complaint Management System",
       shortTitle: "Complaint Management",
       category: "Workflow & Governance",
-      featured: true,
-      featuredOrder: 3,
+      featured: false,
       tagline: "A workplace complaint lifecycle with SLA control and role-based handling.",
       summary:
         "A workspace for submitting, tracking and closing workplace complaints — with anonymous submission, role-based access across unit, admin and support teams, SLA policies, zone and group configuration, and reporting.",
@@ -501,10 +584,10 @@ export const portfolio: PortfolioData = {
       hue: 190,
     },
 
-    /* ---------------------------------------------------------------- 04 */
+    /* ---------------------------------------------------------------- 05 */
     {
       slug: "enterprise-ticketing-system",
-      index: "04",
+      index: "05",
       title: "Enterprise Ticketing System",
       shortTitle: "Ticketing System",
       category: "Support Operations",
@@ -586,11 +669,10 @@ export const portfolio: PortfolioData = {
       hue: 24,
     },
 
-
-    /* ---------------------------------------------------------------- 05 */
+    /* ---------------------------------------------------------------- 06 */
     {
       slug: "bengali-ecommerce-storefront",
-      index: "05",
+      index: "06",
       title: "Bengali E-Commerce Storefront",
       shortTitle: "E-Commerce Storefront",
       category: "E-Commerce",
@@ -670,10 +752,10 @@ export const portfolio: PortfolioData = {
       repoUrl: "",
       hue: 142,
     },
-    /* ---------------------------------------------------------------- 06 */
+    /* ---------------------------------------------------------------- 07 */
     {
       slug: "drive-document-management",
-      index: "06",
+      index: "07",
       title: "Drive & Document Management",
       shortTitle: "Drive System",
       category: "Document Management",
@@ -752,10 +834,10 @@ export const portfolio: PortfolioData = {
       hue: 158,
     },
 
-    /* ---------------------------------------------------------------- 07 */
+    /* ---------------------------------------------------------------- 08 */
     {
       slug: "telecom-corporate-platform",
-      index: "07",
+      index: "08",
       title: "Telecom Corporate Platform",
       shortTitle: "Telecom Platform",
       category: "Corporate Web",
@@ -825,10 +907,10 @@ export const portfolio: PortfolioData = {
       hue: 42,
     },
 
-    /* ---------------------------------------------------------------- 08 */
+    /* ---------------------------------------------------------------- 09 */
     {
       slug: "arabic-service-business-platform",
-      index: "08",
+      index: "09",
       title: "Arabic Service Business Platform",
       shortTitle: "Arabic Service Platform",
       category: "Multilingual Web",
@@ -904,89 +986,6 @@ export const portfolio: PortfolioData = {
       liveUrl: "",
       repoUrl: "",
       hue: 286,
-    },
-
-    /* ---------------------------------------------------------------- 09 */
-    {
-      slug: "portfolio-brand-websites",
-      index: "09",
-      title: "Portfolio & Personal Brand Websites",
-      shortTitle: "Portfolio Websites",
-      category: "Personal Brand",
-      featured: false,
-      tagline: "Editorial personal sites that present expertise, not just a CV.",
-      summary:
-        "Personal brand websites built as editorial products — a full-stack engineering portfolio with an AI project-fit analyzer, and an executive leadership site structured around expertise, impact and sustainability.",
-      problem:
-        "A CV lists roles. It does not show how someone works, what they have actually built, or why a stranger should start a conversation. Most personal sites are a template with a headshot dropped in, which reads the same as everyone else's.",
-      approach:
-        "Treat each site as a product with one job: get a specific reader to a specific action. That means a distinct visual system rather than a theme, content structured around evidence instead of adjectives, and an interaction that does something useful rather than decorating the page.",
-      solution:
-        "Two builds sharing an approach and nothing else visually. The engineering portfolio uses a dark editorial system, case-study pages driven from one typed content file, and an AI analyzer that compares a visitor's requirement against documented work. The executive site uses a light editorial system organised around expertise, leadership, impact and sustainability commitments.",
-      role:
-        "Design and full-stack build. Visual system, component architecture, content model, responsive behaviour, accessibility, AI integration and deployment.",
-      challenge:
-        "Personal sites drift toward self-description. Keeping each one grounded in evidence — real screenshots, documented capabilities, an assistant that refuses to overstate — meant building content structures that make unsupported claims awkward to add in the first place.",
-      outcome:
-        "Two distinct sites that read as products rather than templates, each pointing its own audience at a clear next step.",
-      capabilities: [
-        "Editorial Design Systems",
-        "Component Architecture",
-        "Content Modelling",
-        "AI Integration",
-        "Responsive Layout",
-        "Accessibility",
-        "SEO & Metadata",
-        "Deployment",
-      ],
-      features: [
-        { title: "Distinct visual systems", description: "Each site gets its own type scale, palette and motion language rather than a shared theme." },
-        { title: "Typed content model", description: "All copy and project data in one typed file, so content changes never touch components." },
-        { title: "AI project-fit analyzer", description: "Grounded assistant that compares a visitor's brief against documented work and names the gaps." },
-        { title: "Case-study architecture", description: "Per-project pages generated from data, with dynamic metadata and social images." },
-        { title: "Accessibility built in", description: "Keyboard navigation, visible focus, reduced-motion support and AA contrast in both themes." },
-        { title: "Editorial structure", description: "Expertise, leadership, impact and sustainability presented as sections, not a wall of prose." },
-      ],
-      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "AI Integration"],
-      poster: {
-        src: "/projects/portfolios/portfolios_poster.webp",
-        alt: "Portfolio website development overview showing two personal brand sites across desktop and mobile",
-        width: 1536,
-        height: 1024,
-      },
-      images: [
-        {
-          src: "/projects/portfolios/landingone.webp",
-          alt: "Dark editorial portfolio homepage with an animated system diagram showing interface, API, data, AI and automation layers",
-          caption: "Engineering portfolio — homepage",
-          width: 2560,
-          height: 1368,
-        },
-        {
-          src: "/projects/portfolios/onedetails.webp",
-          alt: "Capabilities section presenting frontend, backend, database, AI and DevOps layers as a connected fan-out diagram",
-          caption: "Engineering portfolio — capabilities",
-          width: 2560,
-          height: 1368,
-        },
-        {
-          src: "/projects/portfolios/landingtwo.webp",
-          alt: "Light editorial executive portfolio homepage with a leadership positioning statement and portrait",
-          caption: "Executive portfolio — homepage",
-          width: 2560,
-          height: 1368,
-        },
-        {
-          src: "/projects/portfolios/twodetails.webp",
-          alt: "Sustainable Development Goals section mapping utility leadership to the seventeen global goals, above a contact block",
-          caption: "Executive portfolio — impact and sustainability",
-          width: 2560,
-          height: 1368,
-        },
-      ],
-      liveUrl: "",
-      repoUrl: "",
-      hue: 250,
     },
   ],
 

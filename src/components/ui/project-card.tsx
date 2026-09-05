@@ -102,11 +102,11 @@ export function ProjectCard({
           }}
         >
           <div className="flex items-center gap-3">
-            <span className="text-eyebrow tabular-nums text-accent">{project.index}</span>
+            <span className="text-meta tabular-nums text-accent">{project.index}</span>
             <span aria-hidden="true" className="h-px w-8 bg-line-strong" />
-            <span className="text-eyebrow text-fg-faint">{project.category}</span>
+            <span className="text-meta text-fg-faint">{project.category}</span>
             {project.multilingual ? (
-              <span className="text-eyebrow ml-auto inline-flex items-center gap-1.5 text-fg-faint">
+              <span className="text-meta ml-auto inline-flex items-center gap-1.5 text-fg-faint">
                 <Languages aria-hidden="true" className="size-3" strokeWidth={1.75} />
                 {project.multilingual.rtl ? "RTL" : project.multilingual.languages[0]}
               </span>

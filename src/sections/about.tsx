@@ -34,7 +34,7 @@ export function About() {
                 strokeWidth={1.5}
               />
               <div>
-                <p className="text-eyebrow text-fg-faint">Education</p>
+                <p className="text-meta text-fg-faint">Education</p>
                 {education.map((entry) => (
                   <p key={entry.institution} className="mt-2 text-sm leading-relaxed text-fg-muted">
                     <span className="text-fg">{entry.degree}</span> in {entry.field}
@@ -71,7 +71,7 @@ export function About() {
               {about.principles.map((principle, i) => (
                 <StaggerItem key={principle.title}>
                   <li className="group/pr flex gap-5 border-b border-line py-5">
-                    <span className="text-eyebrow mt-1 w-6 shrink-0 tabular-nums text-fg-faint transition-colors duration-300 group-hover/pr:text-accent">
+                    <span className="text-meta mt-1 w-6 shrink-0 tabular-nums text-fg-faint transition-colors duration-300 group-hover/pr:text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>

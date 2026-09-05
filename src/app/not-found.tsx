@@ -23,7 +23,7 @@ export default function NotFound() {
       <div className="container-page">
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
           <div>
-            <p className="text-eyebrow text-accent">Error 404</p>
+            <p className="text-meta text-accent">Error 404</p>
 
             <h1 className="text-display mt-6 text-[clamp(2.25rem,1.2rem+4vw,4.5rem)] text-fg">
               Looks like this route went somewhere{" "}
@@ -57,7 +57,7 @@ export default function NotFound() {
             </div>
 
             <nav aria-label="Suggested pages" className="mt-12 border-t border-line pt-6">
-              <p className="text-eyebrow mb-4 text-fg-faint">Try one of these</p>
+              <p className="text-meta mb-4 text-fg-faint">Try one of these</p>
               <ul className="flex flex-wrap gap-x-6 gap-y-2">
                 {portfolio.navigation.slice(1).map((item) => (
                   <li key={item.id}>

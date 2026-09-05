@@ -216,7 +216,7 @@ function MobileNav({
           >
             <div className="container-page">
               <div className="flex items-center justify-between pb-6">
-                <span className="text-eyebrow text-fg-faint">Menu</span>
+                <span className="text-meta text-fg-faint">Menu</span>
                 <button
                   type="button"
                   onClick={onClose}
@@ -249,7 +249,7 @@ function MobileNav({
                       >
                         {item.label}
                       </span>
-                      <span className="text-eyebrow text-fg-faint">
+                      <span className="text-meta text-fg-faint">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </Link>

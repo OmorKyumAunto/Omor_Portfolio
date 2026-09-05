@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowUpRight, ExternalLink, Languages } from "lucide-react";
 import type { Project } from "@/types/portfolio";
 import { Poster, Screenshot } from "@/components/ui/screenshot";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
-import { Tag } from "@/components/ui/tag";
+import { StackDiagram } from "@/components/ui/stack-diagram";
 import { GithubIcon } from "@/components/ui/brand-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -48,18 +48,18 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
           </Reveal>
 
           <div className="mt-10 flex items-center gap-4">
-            <span className="text-eyebrow tabular-nums text-accent">{project.index}</span>
+            <span className="text-meta tabular-nums text-accent">{project.index}</span>
             <span aria-hidden="true" className="h-px w-10 bg-line-strong" />
-            <span className="text-eyebrow text-fg-faint">{project.category}</span>
+            <span className="text-meta text-fg-faint">{project.category}</span>
             <span aria-hidden="true" className="h-px flex-1 bg-line" />
             {project.multilingual ? (
-              <span className="text-eyebrow inline-flex items-center gap-1.5 text-accent-2">
+              <span className="text-meta inline-flex items-center gap-1.5 text-accent-2">
                 <Languages aria-hidden="true" className="size-3" strokeWidth={1.75} />
                 {project.multilingual.languages.join(", ")}
                 {project.multilingual.rtl ? " · RTL" : ""}
               </span>
             ) : (
-              <span className="text-eyebrow text-fg-faint">
+              <span className="text-meta text-fg-faint">
                 {project.year ?? "Selected Work"}
               </span>
             )}
@@ -140,21 +140,13 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
             <Reveal y={18}>
               <dl className="divide-y divide-[color:var(--color-line)] border-y border-line">
                 <div className="py-5">
-                  <dt className="text-eyebrow text-fg-faint">My role</dt>
+                  <dt className="text-meta text-fg-faint">My role</dt>
                   <dd className="mt-2.5 text-[0.875rem] leading-relaxed text-fg-muted">
                     {project.role}
                   </dd>
                 </div>
                 <div className="py-5">
-                  <dt className="text-eyebrow text-fg-faint">Technologies</dt>
-                  <dd className="mt-3 flex flex-wrap gap-1.5">
-                    {project.technologies.map((tech) => (
-                      <Tag key={tech}>{tech}</Tag>
-                    ))}
-                  </dd>
-                </div>
-                <div className="py-5">
-                  <dt className="text-eyebrow text-fg-faint">Capabilities</dt>
+                  <dt className="text-meta text-fg-faint">Capabilities</dt>
                   <dd className="mt-3">
                     <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-1">
                       {project.capabilities.map((capability) => (
@@ -178,12 +170,17 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
         </div>
       </section>
 
+      {/* ----------------------------------------------------- system layers */}
+      <section className="container-page pb-20 md:pb-28">
+        <StackDiagram project={project} />
+      </section>
+
       {/* ---------------------------------------------------------- features */}
       <section className="border-y border-line bg-bg-deep py-20 md:py-28">
         <div className="container-page">
           <Reveal y={0} duration={0.5}>
             <div className="flex items-center gap-4 pb-8">
-              <span className="text-eyebrow text-accent">Key features</span>
+              <span className="text-meta text-accent">Key features</span>
               <span aria-hidden="true" className="h-px flex-1 bg-line-strong" />
             </div>
           </Reveal>
@@ -193,7 +190,7 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
               {project.features.map((feature, i) => (
                 <StaggerItem key={feature.title}>
                   <li className="group/f border-t border-line py-6">
-                    <span className="text-eyebrow tabular-nums text-fg-faint transition-colors duration-400 group-hover/f:text-accent">
+                    <span className="text-meta tabular-nums text-fg-faint transition-colors duration-400 group-hover/f:text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mt-3 text-[1.0625rem] font-medium tracking-[-0.015em] text-fg">
@@ -215,9 +212,9 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
         <section className="container-page py-20 md:py-28">
           <Reveal y={0} duration={0.5}>
             <div className="flex items-center gap-4 pb-8">
-              <span className="text-eyebrow text-accent">Interface</span>
+              <span className="text-meta text-accent">Interface</span>
               <span aria-hidden="true" className="h-px flex-1 bg-line-strong" />
-              <span className="text-eyebrow text-fg-faint">
+              <span className="text-meta text-fg-faint">
                 {`${galleryImages.length} screen${galleryImages.length === 1 ? "" : "s"}`}
               </span>
             </div>
@@ -261,7 +258,7 @@ export function CaseStudy({ project, next }: { project: Project; next: Project }
           <div className="container-page py-16 md:py-24">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <span className="text-eyebrow text-fg-faint">Next project</span>
+                <span className="text-meta text-fg-faint">Next project</span>
                 <p className="text-display mt-4 text-[clamp(1.75rem,1rem+2.6vw,3.25rem)] text-fg transition-colors duration-500 group-hover/n:text-accent">
                   {next.title}
                 </p>
@@ -295,7 +292,7 @@ function Block({
   return (
     <Reveal variant="fade" duration={duration.reveal}>
       <div>
-        <h2 className="text-eyebrow text-fg-faint">{eyebrow}</h2>
+        <h2 className="text-meta text-fg-faint">{eyebrow}</h2>
         <p
           className={
             accent

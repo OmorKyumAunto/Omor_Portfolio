@@ -26,6 +26,7 @@ export function Services() {
       <SectionHeader
         eyebrow="Services"
         index="07"
+        trailing={`${portfolio.services.length} offerings`}
         title="What I can take on."
         align="between"
         lead="Scoped engagements, or ongoing work inside a codebase you already have."
@@ -60,7 +61,7 @@ export function Services() {
             />
 
             <div className="relative grid items-baseline gap-x-8 gap-y-2.5 px-0 py-6 sm:grid-cols-[auto_minmax(0,1.05fr)_minmax(0,1fr)] md:py-7 lg:px-5">
-              <span className="text-eyebrow tabular-nums text-fg-faint transition-colors duration-400 group-hover/sv:text-accent">
+              <span className="text-meta tabular-nums text-fg-faint transition-colors duration-400 group-hover/sv:text-accent">
                 {service.index}
               </span>
 

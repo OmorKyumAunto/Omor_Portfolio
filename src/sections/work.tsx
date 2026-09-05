@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
-import { Section, SectionHeader } from "@/components/ui/section";
-import { ProjectCard } from "@/components/ui/project-card";
+import { Section } from "@/components/ui/section";
+import { ProjectExhibit } from "@/components/ui/project-exhibit";
+import { ProjectIndexRow } from "@/components/ui/project-index-row";
+import { SectionLabel } from "@/components/ui/signal";
 import { Reveal } from "@/components/motion/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -14,84 +16,65 @@ const featured = portfolio.projects
 const more = portfolio.projects.filter((p) => !p.featured);
 
 /**
- * Selected Work.
+ * Selected Work — V2 exhibition.
  *
- * Poster-led and deliberately asymmetric: the first project runs wide, the next
- * two pair up, and the remainder appear as a compact index. The homepage sells
- * the body of work; the case studies explain it.
+ * Two distinct modes rather than one card grid at two sizes: the three featured
+ * systems get full exhibit rows with a dossier of technical metadata beside a
+ * dominant poster, and the rest form an editorial index. The change of mode is
+ * itself the signal that the featured three are the argument and the index is
+ * the evidence behind it.
  */
 export function Work() {
-  const [lead, ...rest] = featured;
-
   return (
     <Section id="work">
-      <SectionHeader
-        eyebrow="Selected Work"
+      <SectionLabel
         index="03"
-        title="Production systems, not portfolio pieces."
-        align="between"
-        lead={
-          <p>
+        label="Selected Work"
+        trailing={`${portfolio.projects.length} systems`}
+      />
+
+      <div className="mt-8 grid gap-x-16 gap-y-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-end">
+        <Reveal variant="mask">
+          <h2 className="text-[clamp(2rem,1.2rem+3vw,4rem)] leading-[1.02] tracking-[-0.04em] text-fg">
+            Production systems,
+            <br />
+            not portfolio pieces.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="max-w-md text-[0.9375rem] leading-relaxed text-fg-muted lg:pb-2">
             Enterprise applications, business workflows and multilingual products —
             built end to end, from data model to interface and deployment.
           </p>
-        }
-      />
+        </Reveal>
+      </div>
 
-      {/* Lead project — widest presentation */}
-      {lead ? (
-        <div className="mt-16 lg:mt-20">
-          {/* Not `priority`: this sits several screens down, and the page's
-              above-fold content is text and inline SVG. */}
-          <ProjectCard
-            project={lead}
-            size="feature"
-            sizes="(min-width: 1280px) 1160px, (min-width: 768px) 92vw, 100vw"
-          />
-        </div>
-      ) : null}
+      {/* Featured exhibits. Generous separation: each one should own its screen. */}
+      <div className="mt-20 space-y-28 md:mt-28 md:space-y-36 lg:space-y-44">
+        {featured.map((project, i) => (
+          <ProjectExhibit key={project.slug} project={project} position={i} />
+        ))}
+      </div>
 
-      {/* Remaining featured — paired */}
-      {rest.length > 0 ? (
-        <div className="mt-16 grid gap-x-10 gap-y-16 lg:mt-24 lg:grid-cols-2">
-          {rest.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              size="feature"
-              sizes="(min-width: 1024px) 46vw, 100vw"
-            />
-          ))}
-        </div>
-      ) : null}
-
-      {/* More systems — compact, still poster-led */}
+      {/* The rest, as an index. */}
       {more.length > 0 ? (
-        <div className="mt-24 lg:mt-32">
-          <Reveal y={0} duration={0.6}>
-            <div className="flex items-center gap-4 pb-10">
-              <h3 className="text-eyebrow text-accent">More systems I&apos;ve built</h3>
-              <span aria-hidden="true" className="h-px flex-1 bg-line-strong" />
-              <span className="text-eyebrow tabular-nums text-fg-faint">
-                {String(more.length).padStart(2, "0")}
-              </span>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-x-10 gap-y-14 md:grid-cols-2">
+        <div className="mt-32 lg:mt-44">
+          <SectionLabel
+            index="03.2"
+            label="System Index"
+            tone="muted"
+            trailing={String(more.length).padStart(2, "0")}
+          />
+          <div className="mt-8 border-b border-line">
             {more.map((project) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                sizes="(min-width: 768px) 46vw, 100vw"
-              />
+              <ProjectIndexRow key={project.slug} project={project} />
             ))}
           </div>
         </div>
       ) : null}
 
-      <Reveal y={18} className="mt-16 lg:mt-20">
-        <div className="flex flex-wrap items-center justify-between gap-6 border-t border-line pt-8">
+      <Reveal y={18} className="mt-14">
+        <div className="flex flex-wrap items-center justify-between gap-6">
           <p className="max-w-md text-[0.9375rem] leading-relaxed text-fg-muted">
             Every project has a full case study — the problem, the approach, the
             architecture and what it actually does.

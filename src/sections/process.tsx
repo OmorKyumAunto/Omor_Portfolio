@@ -30,6 +30,7 @@ export function Process() {
       <SectionHeader
         eyebrow="How I Work"
         index="08"
+        trailing={`${portfolio.process.length} steps`}
         title="Six steps, no surprises."
         align="between"
         lead="The same sequence every time — so you always know what is happening and what comes next."
@@ -69,7 +70,7 @@ export function Process() {
                 className="absolute left-[5px] top-[11px] size-[5px] rounded-full bg-accent lg:top-[5px]"
               />
 
-              <span className="text-eyebrow block tabular-nums text-fg-faint">
+              <span className="text-meta block tabular-nums text-fg-faint">
                 {step.index}
               </span>
               <h3 className="mt-2 text-[1.0625rem] font-medium tracking-[-0.015em] text-fg">

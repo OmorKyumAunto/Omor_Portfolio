@@ -197,12 +197,37 @@
   line-height: 0.98;
 }
 
-@utility text-eyebrow {
+/* Signal V2 — monumental editorial display.
+   Tighter tracking and leading than `text-display`, for type that is meant to
+   read as a structural element of the page rather than as a heading. */
+@utility text-monumental {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  text-wrap: balance;
+}
+
+/* Oversized index numerals used as a compositional motif behind content. */
+@utility text-index {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.78;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The single mono label voice, used for every eyebrow, coordinate and
+   key/value label on the site. V1 shipped two near-identical utilities
+   (`text-eyebrow` at 0.18em and this one at 0.12em) which read as drift rather
+   than hierarchy; they are now one. */
+@utility text-meta {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  line-height: 1.4;
 }
 
 @utility text-serif-accent {
@@ -279,6 +304,81 @@
   50% { transform: translate3d(-1%, 2%, 0); }
   66% { transform: translate3d(2%, 1%, 0); }
   83% { transform: translate3d(-3%, 1%, 0); }
+}
+
+/* ------------------------------------------------- Signal V2 structure --- */
+
+/* Corner markers. Four hairline brackets that frame a region without drawing a
+   full box — reads as an instrument bezel rather than a card. */
+.tech-corners::before,
+.tech-corners::after {
+  content: "";
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  pointer-events: none;
+  border-color: hsl(var(--line) / var(--line-strong-a));
+  transition: border-color 400ms var(--ease-expo);
+}
+.tech-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.tech-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+.group\/card:hover .tech-corners::before,
+.group\/card:hover .tech-corners::after,
+.tech-corners[data-active="true"]::before,
+.tech-corners[data-active="true"]::after {
+  border-color: hsl(var(--accent) / 0.55);
+}
+
+/* Vertical hairlines marking the container edges — the persistent structural
+   spine of the page. Purely decorative, sits behind everything. */
+.field-rails {
+  background-image:
+    linear-gradient(to right, hsl(var(--line) / var(--grid-a)) 1px, transparent 1px),
+    linear-gradient(to left, hsl(var(--line) / var(--grid-a)) 1px, transparent 1px);
+  background-position: left top, right top;
+  background-repeat: repeat-y, repeat-y;
+  background-size: 50% 100%, 50% 100%;
+}
+
+/* Faint horizontal scanlines. Used only in the AI section, where a measured
+   readout texture is the point.
+
+   The lines fade out down the panel: held at full strength they read as a
+   rendering artefact on anything taller than a few hundred pixels, and the
+   texture is only doing work near the instrument's head. */
+.field-scan {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    hsl(var(--line) / 0.045) 0px,
+    hsl(var(--line) / 0.045) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  mask-image: linear-gradient(to bottom, black, transparent 55%);
+}
+
+/* .field-scan carries a mask, which would apply to descendants too. It is
+   therefore always used on a dedicated empty layer, never on a content box. */
+
+/* Hides the scrollbar chrome on a horizontal track without disabling the
+   scrolling itself — the panel peeking past the edge is the affordance. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Technical grid backdrop */

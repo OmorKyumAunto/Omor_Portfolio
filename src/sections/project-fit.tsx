@@ -11,6 +11,7 @@ import { MAX_INPUT, MIN_INPUT } from "@/lib/ai/schema";
 import type { Analysis, MatchLevel } from "@/lib/ai/types";
 import { useReducedMotion } from "@/hooks/use-media-query";
 import { Section } from "@/components/ui/section";
+import { SectionLabel } from "@/components/ui/signal";
 import { Reveal } from "@/components/motion/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,9 @@ const directChannels = (["upwork", "linkedin"] as const)
   .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
 type Status = "idle" | "analyzing" | "done" | "error";
+
+/** Slug -> project, so a result can only ever render a real project's poster. */
+const projectsBySlug = new Map(portfolio.projects.map((p) => [p.slug, p]));
 
 /**
  * AI Project Fit Analyzer.
@@ -94,13 +98,7 @@ export function ProjectFit() {
         <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
           {/* ------------------------------------------------------- intro -- */}
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <Reveal y={0} duration={0.6}>
-              <div className="flex items-center gap-4 pb-5">
-                <span className="text-eyebrow text-accent">{aiAssistant.eyebrow}</span>
-                <span aria-hidden="true" className="h-px w-16 bg-line-strong" />
-                <span className="text-eyebrow tabular-nums text-fg-faint">04</span>
-              </div>
-            </Reveal>
+            <SectionLabel index="04" label={aiAssistant.eyebrow} className="pb-6" />
 
             <Reveal y={20}>
               <h2 className="text-display text-[clamp(2rem,1.2rem+3.2vw,3.5rem)] text-fg">
@@ -139,15 +137,38 @@ export function ProjectFit() {
                 </div>
               </div>
             </Reveal>
+
+            {/* What the analysis is actually grounded in. Naming the corpus is
+                the honest version of "AI-powered": there are exactly these
+                systems behind every answer, and nothing else. */}
+            <Reveal y={16} delay={0.18}>
+              <CorpusPanel scanning={status === "analyzing"} reduced={Boolean(reduced)} />
+            </Reveal>
           </div>
 
           {/* ------------------------------------------------------ console -- */}
           <Reveal y={22} amount={0.15}>
-            <div className="rounded-2xl border border-line-strong bg-surface/60 backdrop-blur-sm">
+            <div className="tech-corners relative rounded-2xl border border-line-strong bg-surface/60 backdrop-blur-sm" data-active={status === "analyzing" ? "true" : undefined}>
+              {/* Readout texture on its own layer: `.field-scan` is masked, and
+                  a mask on the content box would fade the console with it. */}
+              <span
+                aria-hidden="true"
+                className="field-scan pointer-events-none absolute inset-0 rounded-2xl"
+              />
               {/* Console header */}
-              <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3.5 sm:px-6">
-                <span className="text-eyebrow text-fg-faint">Project fit analyzer</span>
+              <div className="relative flex items-center justify-between gap-4 border-b border-line px-5 py-3.5 sm:px-6">
+                <span className="text-meta text-fg-faint">Project fit analyzer</span>
                 <StatusPill status={status} />
+                {/* Live scan line across the console head while a request is in
+                    flight. One element, and it stops under reduced motion. */}
+                {status === "analyzing" && !reduced ? (
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 -bottom-px h-px overflow-hidden"
+                  >
+                    <span className="block h-full w-1/3 bg-linear-to-r from-transparent via-accent to-transparent [animation:rule-sweep_1.6s_var(--ease-inout)_infinite]" />
+                  </span>
+                ) : null}
               </div>
 
               <div className="p-5 sm:p-6">
@@ -159,7 +180,7 @@ export function ProjectFit() {
                 >
                   <label
                     htmlFor="fit-input"
-                    className="text-eyebrow block text-fg-subtle"
+                    className="text-meta block text-fg-subtle"
                   >
                     {aiAssistant.inputLabel}
                   </label>
@@ -246,7 +267,7 @@ export function ProjectFit() {
                 {/* Quick prompts */}
                 {status === "idle" ? (
                   <div className="mt-7 border-t border-line pt-5">
-                    <p className="text-eyebrow mb-3 text-fg-faint">Or try one of these</p>
+                    <p className="text-meta mb-3 text-fg-faint">Or try one of these</p>
                     <ul className="flex flex-wrap gap-2">
                       {aiAssistant.examples.map((example) => (
                         <li key={example.label}>
@@ -501,29 +522,46 @@ function Result({ analysis, reduced }: { analysis: Analysis; reduced: boolean })
 
       {analysis.relevantProjects.length > 0 ? (
         <Block title="Relevant work" reduced={reduced}>
-          <ul className="divide-y divide-[color:var(--color-line)] border-y border-line">
-            {analysis.relevantProjects.map((project) => (
-              <li key={project.slug}>
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="group/rp flex items-start justify-between gap-4 py-3.5"
-                >
-                  <span>
-                    <span className="block text-[0.875rem] font-medium text-fg transition-colors duration-300 group-hover/rp:text-accent">
-                      {project.title}
+          <ul className="border-t border-line">
+            {analysis.relevantProjects.map((project) => {
+              // The model returns a slug; the poster comes from the portfolio
+              // data, so a result can only ever show a real project's image.
+              const real = projectsBySlug.get(project.slug);
+              return (
+                <li key={project.slug} className="border-b border-line">
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="group/rp grid grid-cols-[5.5rem_minmax(0,1fr)_auto] items-start gap-4 py-4"
+                  >
+                    <span className="overflow-hidden rounded-md border border-line">
+                      {real ? (
+                        <Image
+                          src={real.poster.src}
+                          alt=""
+                          width={real.poster.width}
+                          height={real.poster.height}
+                          sizes="88px"
+                          className="block h-auto w-full opacity-80 transition-opacity duration-500 group-hover/rp:opacity-100"
+                        />
+                      ) : null}
                     </span>
-                    <span className="mt-1 block text-[0.8125rem] leading-relaxed text-fg-subtle">
-                      {project.why}
+                    <span className="min-w-0">
+                      <span className="block text-[0.875rem] font-medium text-fg transition-colors duration-300 group-hover/rp:text-accent">
+                        {real?.title ?? project.title}
+                      </span>
+                      <span className="mt-1 block text-[0.8125rem] leading-relaxed text-fg-subtle">
+                        {project.why}
+                      </span>
                     </span>
-                  </span>
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="mt-1 size-3.5 shrink-0 text-fg-faint transition-transform duration-500 [transition-timing-function:var(--ease-expo)] group-hover/rp:translate-x-1"
-                    strokeWidth={1.75}
-                  />
-                </Link>
-              </li>
-            ))}
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="mt-1 size-3.5 shrink-0 text-fg-faint transition-transform duration-500 [transition-timing-function:var(--ease-expo)] group-hover/rp:translate-x-1"
+                      strokeWidth={1.75}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </Block>
       ) : null}
@@ -533,7 +571,7 @@ function Result({ analysis, reduced }: { analysis: Analysis; reduced: boolean })
           <ol className="space-y-2.5">
             {analysis.suggestedApproach.map((step, i) => (
               <li key={i} className="flex gap-3 text-[0.875rem] leading-relaxed text-fg-muted">
-                <span className="text-eyebrow mt-0.5 shrink-0 tabular-nums text-fg-faint">
+                <span className="text-meta mt-0.5 shrink-0 tabular-nums text-fg-faint">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {step}
@@ -557,7 +595,7 @@ function Result({ analysis, reduced }: { analysis: Analysis; reduced: boolean })
       ) : null}
 
       <motion.div variants={blockIn(reduced)} className="mt-7 rounded-lg border border-line-strong bg-bg/40 p-5">
-        <p className="text-eyebrow text-fg-faint">Recommended next step</p>
+        <p className="text-meta text-fg-faint">Recommended next step</p>
         <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-fg-muted">{analysis.nextStep}</p>
 
         <p className="mt-6 text-[0.875rem] font-medium text-fg">Discuss this project with me</p>
@@ -632,8 +670,73 @@ function Block({
 }) {
   return (
     <motion.div variants={blockIn(reduced)} className="mt-7">
-      <h3 className="text-eyebrow mb-3 text-fg-faint">{title}</h3>
+      <h3 className="text-meta mb-3 text-fg-faint">{title}</h3>
       {children}
     </motion.div>
+  );
+}
+
+/**
+ * The grounding corpus.
+ *
+ * Every answer this section produces is compared against exactly these systems.
+ * Showing them is both an explanation of the feature and the honest limit of
+ * it: there is no wider training set being consulted.
+ *
+ * While a request is in flight the tiles light in sequence — a readout of the
+ * comparison, not a fake progress bar. Under reduced motion the sequence does
+ * not run and the panel simply reads as a list.
+ */
+function CorpusPanel({ scanning, reduced }: { scanning: boolean; reduced: boolean }) {
+  const [pulse, setPulse] = useState(-1);
+
+  useEffect(() => {
+    if (!scanning || reduced) return;
+    const interval = setInterval(() => {
+      setPulse((i) => (i + 1) % portfolio.projects.length);
+    }, 190);
+    // Reset on the way out rather than on the way in: a synchronous setState in
+    // the effect body would schedule a cascading render on every mount.
+    return () => {
+      clearInterval(interval);
+      setPulse(-1);
+    };
+  }, [scanning, reduced]);
+
+  return (
+    <div className="mt-9 border-t border-line pt-6">
+      <div className="flex items-center gap-3">
+        <span className="text-meta text-fg-faint">Grounded in</span>
+        <span aria-hidden="true" className="h-px flex-1 bg-line" />
+        <span className="text-meta tabular-nums text-fg-faint">
+          {String(portfolio.projects.length).padStart(2, "0")} systems
+        </span>
+      </div>
+
+      <ul className="mt-4 grid grid-cols-3 gap-px bg-line">
+        {portfolio.projects.map((project, i) => (
+          <li
+            key={project.slug}
+            className={cn(
+              "relative bg-bg-deep px-2.5 py-3 transition-colors duration-500",
+              scanning && pulse === i && "bg-accent-soft",
+            )}
+          >
+            <span
+              aria-hidden="true"
+              className={cn(
+                "text-meta block tabular-nums transition-colors duration-500",
+                scanning && pulse === i ? "text-accent" : "text-fg-faint",
+              )}
+            >
+              {project.index}
+            </span>
+            <span className="mt-1 block text-[0.6875rem] leading-tight text-fg-subtle">
+              {project.shortTitle ?? project.category}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

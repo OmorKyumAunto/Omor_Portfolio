@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Languages } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
 import { Section } from "@/components/ui/section";
+import { SectionLabel } from "@/components/ui/signal";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { Poster } from "@/components/ui/screenshot";
 import { Tag } from "@/components/ui/tag";
@@ -34,12 +35,7 @@ export function Multilingual() {
 
       <div className="relative grid items-center gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
         <div>
-          <Reveal y={0} duration={0.6}>
-            <div className="flex items-center gap-4 pb-5">
-              <span className="text-eyebrow text-accent-2">{multilingual.eyebrow}</span>
-              <span aria-hidden="true" className="h-px w-16 bg-line-strong" />
-            </div>
-          </Reveal>
+          <SectionLabel index="04.2" label={multilingual.eyebrow} tone="violet" className="pb-6" />
 
           <Reveal y={20}>
             <h2 className="text-display text-[clamp(1.75rem,1.1rem+2.4vw,2.75rem)] text-fg">
@@ -54,6 +50,16 @@ export function Multilingual() {
             <p className="mt-6 max-w-lg text-[0.9375rem] leading-relaxed text-fg-muted md:text-base">
               {multilingual.lead}
             </p>
+
+            {/* The axis this section is actually about. Two reading directions
+                meeting, drawn once, at the scale of a caption. */}
+            <div aria-hidden="true" className="mt-8 flex items-center gap-3">
+              <span className="text-meta text-fg-faint">LTR</span>
+              <span className="h-px flex-1 bg-linear-to-r from-accent/60 to-transparent" />
+              <span className="text-meta text-accent-2">&#8644;</span>
+              <span className="h-px flex-1 bg-linear-to-l from-accent-2/60 to-transparent" />
+              <span className="text-meta text-fg-faint">RTL</span>
+            </div>
           </Reveal>
 
           <Stagger className="mt-10" amount={0.15}>
@@ -78,14 +84,17 @@ export function Multilingual() {
         <Reveal variant="mask" duration={duration.editorial} amount={viewport.early.amount}>
           <div className="space-y-8">
             {projects.map((project, i) => (
-              <figure key={project.slug}>
+              <figure key={project.slug} dir={project.multilingual!.rtl ? "rtl" : "ltr"}>
                 <Poster
                   image={project.poster}
                   showNote={false}
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className={i === 0 ? "shadow-[0_40px_120px_-60px_hsl(var(--bg-deep))]" : undefined}
                 />
-                <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                {/* `dir` is set on the figure, so this caption physically
+                    reverses for the right-to-left project: the section shows the
+                    behaviour it describes rather than only asserting it. */}
+                <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-start">
                   <Link
                     href={`/work/${project.slug}`}
                     className="group/ml inline-flex items-center gap-2 border-b border-line-strong pb-0.5 text-[0.875rem] text-fg transition-colors duration-300 hover:border-accent-2"
@@ -93,7 +102,7 @@ export function Multilingual() {
                     {project.title}
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="size-3.5 text-fg-subtle transition-transform duration-500 [transition-timing-function:var(--ease-expo)] group-hover/ml:translate-x-0.5 group-hover/ml:-translate-y-0.5"
+                      className="size-3.5 text-fg-subtle transition-transform duration-500 [transition-timing-function:var(--ease-expo)] group-hover/ml:-translate-y-0.5 rtl:-scale-x-100 group-hover/ml:translate-x-0.5"
                       strokeWidth={1.75}
                     />
                   </Link>

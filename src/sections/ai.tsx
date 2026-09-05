@@ -1,5 +1,6 @@
 import { portfolio } from "@/data/portfolio";
 import { Section } from "@/components/ui/section";
+import { SectionLabel } from "@/components/ui/signal";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 
 /**
@@ -23,13 +24,7 @@ export function AiIntegration() {
       <div className="container-page relative">
         <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <Reveal y={0} duration={0.6}>
-              <div className="flex items-center gap-4 pb-5">
-                <span className="text-eyebrow text-accent-2">{ai.eyebrow}</span>
-                <span aria-hidden="true" className="h-px w-16 bg-line-strong" />
-                <span className="text-eyebrow tabular-nums text-fg-faint">06</span>
-              </div>
-            </Reveal>
+            <SectionLabel index="06" label={ai.eyebrow} tone="violet" className="pb-6" />
 
             <Reveal y={20}>
               <h2 className="text-display text-[clamp(2rem,1.2rem+3.4vw,3.75rem)] text-fg">
@@ -62,7 +57,7 @@ export function AiIntegration() {
               {ai.capabilities.map((capability, i) => (
                 <StaggerItem key={capability.title}>
                   <li className="group/ai grid gap-1 py-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-6">
-                    <span className="text-eyebrow pt-1 tabular-nums text-fg-faint transition-colors duration-400 group-hover/ai:text-accent-2">
+                    <span className="text-meta pt-1 tabular-nums text-fg-faint transition-colors duration-400 group-hover/ai:text-accent-2">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>

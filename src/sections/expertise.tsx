@@ -33,6 +33,7 @@ export function Expertise() {
       <SectionHeader
         eyebrow="Experience"
         index="02"
+        trailing={`${portfolio.expertise.length} areas`}
         title="Where the work happens."
         align="between"
         lead="Six areas I've built in repeatedly. Each one is a class of problem, not a job title."

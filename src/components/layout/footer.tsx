@@ -35,7 +35,7 @@ export function Footer({
 
           {/* Navigation */}
           <nav aria-label="Footer">
-            <p className="text-eyebrow mb-5 text-fg-faint">Sitemap</p>
+            <p className="text-meta mb-5 text-fg-faint">Sitemap</p>
             <ul className="grid grid-cols-2 gap-x-8 gap-y-2.5">
               {portfolio.navigation
                 .filter((item) => aiEnabled || item.id !== "project-fit")
@@ -54,7 +54,7 @@ export function Footer({
 
           {/* Status + reach */}
           <div>
-            <p className="text-eyebrow mb-5 text-fg-faint">Status</p>
+            <p className="text-meta mb-5 text-fg-faint">Status</p>
 
             {personal.availability.enabled ? (
               <p className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-fg-muted">
