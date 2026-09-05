@@ -1,0 +1,321 @@
+{
+  "generated": 35,
+  "hash": "76019bc19074",
+  "images": [
+    {
+      "from": "/assets/my-image.jpg",
+      "to": "/assets/my-image.webp",
+      "width": 1587,
+      "height": 2245,
+      "masks": 0,
+      "originalSize": 1449353,
+      "size": 98614
+    },
+    {
+      "from": "/projects/cms/cms_poster.png",
+      "to": "/projects/cms/cms_poster.webp",
+      "width": 1536,
+      "height": 1024,
+      "masks": 5,
+      "originalSize": 1636507,
+      "size": 124062
+    },
+    {
+      "from": "/projects/cms/dasboard.png",
+      "to": "/projects/cms/dasboard.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 3,
+      "originalSize": 1447202,
+      "size": 79406
+    },
+    {
+      "from": "/projects/cms/details.png",
+      "to": "/projects/cms/details.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 5,
+      "originalSize": 938840,
+      "size": 69620
+    },
+    {
+      "from": "/projects/cms/loginpage.png",
+      "to": "/projects/cms/loginpage.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 2,
+      "originalSize": 6791979,
+      "size": 54700
+    },
+    {
+      "from": "/projects/drive/details.png",
+      "to": "/projects/drive/details.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 3,
+      "originalSize": 1240242,
+      "size": 39458
+    },
+    {
+      "from": "/projects/drive/Drive_poster.png",
+      "to": "/projects/drive/Drive_poster.webp",
+      "width": 1536,
+      "height": 1024,
+      "masks": 2,
+      "originalSize": 1502456,
+      "size": 97006
+    },
+    {
+      "from": "/projects/drive/drivedash.png",
+      "to": "/projects/drive/drivedash.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 5,
+      "originalSize": 1659886,
+      "size": 48234
+    },
+    {
+      "from": "/projects/ecommerce/checkout.png",
+      "to": "/projects/ecommerce/checkout.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 0,
+      "originalSize": 2127682,
+      "size": 76050
+    },
+    {
+      "from": "/projects/ecommerce/home.png",
+      "to": "/projects/ecommerce/home.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 1,
+      "originalSize": 7389643,
+      "size": 211226
+    },
+    {
+      "from": "/projects/ecommerce/products.png",
+      "to": "/projects/ecommerce/products.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 0,
+      "originalSize": 3669433,
+      "size": 159214
+    },
+    {
+      "from": "/projects/ecommerce/urbanshopPoster.png",
+      "to": "/projects/ecommerce/urbanshopPoster.webp",
+      "width": 1672,
+      "height": 941,
+      "masks": 0,
+      "originalSize": 2040029,
+      "size": 203532
+    },
+    {
+      "from": "/projects/helpdesk/helpdesk_poster.png",
+      "to": "/projects/helpdesk/helpdesk_poster.webp",
+      "width": 1536,
+      "height": 1024,
+      "masks": 4,
+      "originalSize": 1643229,
+      "size": 140362
+    },
+    {
+      "from": "/projects/helpdesk/helpdesk-dashboard.png",
+      "to": "/projects/helpdesk/helpdesk-dashboard.webp",
+      "width": 2560,
+      "height": 1370,
+      "masks": 2,
+      "originalSize": 1309362,
+      "size": 98140
+    },
+    {
+      "from": "/projects/helpdesk/stock.png",
+      "to": "/projects/helpdesk/stock.webp",
+      "width": 2560,
+      "height": 1370,
+      "masks": 4,
+      "originalSize": 1126341,
+      "size": 99078
+    },
+    {
+      "from": "/projects/helpdesk/support.png",
+      "to": "/projects/helpdesk/support.webp",
+      "width": 2560,
+      "height": 1370,
+      "masks": 4,
+      "originalSize": 1342450,
+      "size": 105340
+    },
+    {
+      "from": "/projects/hr-platform/hrm_poster.png",
+      "to": "/projects/hr-platform/hrm_poster.webp",
+      "width": 1672,
+      "height": 941,
+      "masks": 13,
+      "originalSize": 1531371,
+      "size": 130186
+    },
+    {
+      "from": "/projects/hr-platform/hrm-dash.png",
+      "to": "/projects/hr-platform/hrm-dash.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 5,
+      "originalSize": 880693,
+      "size": 81768
+    },
+    {
+      "from": "/projects/hr-platform/onboard.png",
+      "to": "/projects/hr-platform/onboard.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 6,
+      "originalSize": 1188875,
+      "size": 120934
+    },
+    {
+      "from": "/projects/hr-platform/requisition.png",
+      "to": "/projects/hr-platform/requisition.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 5,
+      "originalSize": 717470,
+      "size": 95960
+    },
+    {
+      "from": "/projects/others/details.png",
+      "to": "/projects/others/details.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 0,
+      "originalSize": 1793961,
+      "size": 82070
+    },
+    {
+      "from": "/projects/others/home.png",
+      "to": "/projects/others/home.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 1,
+      "originalSize": 4777524,
+      "size": 98090
+    },
+    {
+      "from": "/projects/others/Khamis_poster.png",
+      "to": "/projects/others/Khamis_poster.webp",
+      "width": 1672,
+      "height": 941,
+      "masks": 0,
+      "originalSize": 1862522,
+      "size": 169848
+    },
+    {
+      "from": "/projects/others/maps.png",
+      "to": "/projects/others/maps.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 0,
+      "originalSize": 797897,
+      "size": 117920
+    },
+    {
+      "from": "/projects/portfolios/landingone.png",
+      "to": "/projects/portfolios/landingone.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 0,
+      "originalSize": 4792801,
+      "size": 76588
+    },
+    {
+      "from": "/projects/portfolios/landingtwo.png",
+      "to": "/projects/portfolios/landingtwo.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 0,
+      "originalSize": 3524306,
+      "size": 80950
+    },
+    {
+      "from": "/projects/portfolios/onedetails.png",
+      "to": "/projects/portfolios/onedetails.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 0,
+      "originalSize": 2943198,
+      "size": 90764
+    },
+    {
+      "from": "/projects/portfolios/portfolios_poster.png",
+      "to": "/projects/portfolios/portfolios_poster.webp",
+      "width": 1536,
+      "height": 1024,
+      "masks": 0,
+      "originalSize": 1855808,
+      "size": 165910
+    },
+    {
+      "from": "/projects/portfolios/twodetails.png",
+      "to": "/projects/portfolios/twodetails.webp",
+      "width": 2560,
+      "height": 1368,
+      "masks": 0,
+      "originalSize": 605870,
+      "size": 107220
+    },
+    {
+      "from": "/projects/telecom/details.png",
+      "to": "/projects/telecom/details.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 0,
+      "originalSize": 2019368,
+      "size": 123986
+    },
+    {
+      "from": "/projects/telecom/telecom_poster.png",
+      "to": "/projects/telecom/telecom_poster.webp",
+      "width": 1672,
+      "height": 941,
+      "masks": 1,
+      "originalSize": 1831294,
+      "size": 162080
+    },
+    {
+      "from": "/projects/telecom/telecomhome.png",
+      "to": "/projects/telecom/telecomhome.webp",
+      "width": 2560,
+      "height": 1375,
+      "masks": 1,
+      "originalSize": 4474754,
+      "size": 110550
+    },
+    {
+      "from": "/projects/ticketing/report.png",
+      "to": "/projects/ticketing/report.webp",
+      "width": 1400,
+      "height": 1636,
+      "masks": 2,
+      "originalSize": 218044,
+      "size": 43646
+    },
+    {
+      "from": "/projects/ticketing/ticket-dashboard.png",
+      "to": "/projects/ticketing/ticket-dashboard.webp",
+      "width": 2560,
+      "height": 1498,
+      "masks": 2,
+      "originalSize": 794571,
+      "size": 79276
+    },
+    {
+      "from": "/projects/ticketing/ticketing_poster.png",
+      "to": "/projects/ticketing/ticketing_poster.webp",
+      "width": 1536,
+      "height": 1024,
+      "masks": 6,
+      "originalSize": 1556825,
+      "size": 112596
+    }
+  ]
+}
